@@ -1,13 +1,14 @@
 import React from "react";
 import pizzaRepository from "../api/Repositories/pizzaRepository";
 
-const useShowItems = () => {
+const useShowItems = ({ categoryId, sort }) => {
 
     const [items, setItems] = React.useState([])
     const [isLoading, setIsLoading] = React.useState(true);
 
     React.useEffect(() => {
-        pizzaRepository.getPizzas()
+        setIsLoading(true);
+        pizzaRepository.getPizzas(sort, categoryId)
             .then(({ data }) => {
                 setItems(data);
             })
@@ -18,7 +19,8 @@ const useShowItems = () => {
             .finally(() => {
                 setIsLoading(false);
             });
-    }, [])
+        window.scrollTo(0, 0);
+    }, [categoryId, sort])
 
     return { items, isLoading }
 

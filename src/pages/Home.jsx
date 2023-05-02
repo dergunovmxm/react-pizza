@@ -5,13 +5,20 @@ import Card from "../components/Card";
 import Skeleton from "../components/Card/Skeleton";
 
 const Home = () => {
-  const { items, isLoading } = useShowItems();
-
+  const [categoryId, setCategoryId] = React.useState(0);
+  const [sort, setSort] = React.useState({
+    name: "популярности",
+    sortType: "rating"
+  });
+  const { items, isLoading } = useShowItems({ categoryId, sort });
   return (
-    <>
+    <div className="container">
       <div className="content__top">
-        <Categories />
-        <Sort />
+        <Categories
+          value={categoryId}
+          onClickCategory={(index) => setCategoryId(index)}
+        />
+        <Sort value={sort} onChangeSort={(index) => setSort(index)} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
@@ -19,7 +26,7 @@ const Home = () => {
           ? [...new Array(8)].map((_, index) => <Skeleton key={index} />)
           : items.map((item) => <Card {...item} key={item.id} />)}
       </div>
-    </>
+    </div>
   );
 };
 
