@@ -4,13 +4,21 @@ import useShowItems from "../hooks/useShowItems";
 import Card from "../components/Card";
 import Skeleton from "../components/Card/Skeleton";
 
-const Home = () => {
+const Home = ({searchValue}) => {
   const [categoryId, setCategoryId] = React.useState(0);
   const [sort, setSort] = React.useState({
     name: "популярности",
-    sortType: "rating"
+    sortType: "rating",
   });
-  const { items, isLoading } = useShowItems({ categoryId, sort });
+  const { items, isLoading } = useShowItems({ categoryId, sort, searchValue });
+
+  // const filter = items.filter((item) => {
+  //   if(item.title.toLowerCase().includes(searchValue.toLowerCase())){
+  //     return true;
+  //   }
+  //   return false
+  // })
+
   return (
     <div className="container">
       <div className="content__top">

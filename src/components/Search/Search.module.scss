@@ -1,0 +1,40 @@
+.root{
+    position: relative;
+    left: -120px;
+}
+.serach{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 8px 35px;
+    width: 300px;
+    outline: none;
+    transition: width .3s  ;
+
+    // &:focus{
+    //     border: 1px solid rgba(0, 0, 0, 0.3);
+    //     width: 400px;
+    //     transition: width .3s  ;
+    // }
+}
+
+.icon{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    opacity: .3;
+}
+
+.close{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    bottom: 8px;
+    opacity: .3;
+    cursor: pointer;
+    &:hover {
+        opacity: .6;
+    }
+}
